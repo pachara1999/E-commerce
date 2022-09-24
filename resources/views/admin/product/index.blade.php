@@ -19,25 +19,32 @@
                     <table class="table table-bordered table-hover" id="">
                         <thead>
                             <tr>
-                                <td>ID</td>
+                                <td width="5%">#</td>
                                 <td>Name</td>
                                 <td>Category</td>
-                                <td>Description</td>
                                 <td>Original Price</td>
                                 <td>Selling</td>
+                                <td>Trending</td>
                                 <td width="150px">Image</td>
                                 <td>Tools</td>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $index = 1; ?>
                             @foreach ($products as $item)
                                 <tr>
-                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $index++ }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->category->name }}</td>
-                                    <td>{{ $item->description }}</td>
                                     <td>{{ $item->original_price }} Bath</td>
                                     <td>{{ $item->selling_price }} Bath</td>
+                                    <td>
+                                        @if($item->trending)
+                                            <i class="fas fa-check-circle" style="color: rgb(39, 218, 113);"></i>
+                                        @else
+                                            <i class="fas fa-times-circle" style="color: rgb(218, 39, 39);"></i> 
+                                        @endif
+                                    </td>
                                     <td>
                                         @if ($item->image != null)
                                             <img src="{{ asset('assets/uploads/products/' . $item->image) }}" alt="image"

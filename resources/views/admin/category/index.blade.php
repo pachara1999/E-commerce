@@ -19,7 +19,7 @@
                     <table class="table table-bordered table-hover" id="">
                         <thead>
                             <tr>
-                                <td>ID</td>
+                                <td width="5%">#</td>
                                 <td>Name</td>
                                 <td>Description</td>
                                 <td width="150px">Image</td>
@@ -27,9 +27,10 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $index = 1 ; ?>
                             @foreach($categories as $item)
                             <tr>
-                                <td>{{ $item->id }}</td>
+                                <td>{{ $index++ }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->description }}</td>
                                 <td>

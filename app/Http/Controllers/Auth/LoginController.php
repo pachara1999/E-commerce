@@ -32,7 +32,7 @@ class LoginController extends Controller
     {
         if(Auth::user()->role_as == '1') // 1 = Admin
         {
-            return redirect('dashboard')->with('status', 'Welcome to ypur Dashboard');
+            return redirect('dashboard')->with('status', 'Logged in Successfully');
         }
         elseif(Auth::user()->role_as == '0')
         {
