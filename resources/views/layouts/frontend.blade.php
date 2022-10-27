@@ -44,8 +44,10 @@
             @yield('content')
         </div>
     
+    <script src="{{ asset('frontend/js/custom.js') }}" defer></script>
     <!--   Core JS Files   -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script> --}}
     <script src="{{ asset('frontend/js/bootstrap5.bundle.min.js') }}" defer></script>
     <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
     

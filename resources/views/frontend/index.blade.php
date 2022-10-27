@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="owl-carousel features-carousel owl-theme">
                     @foreach ($feature_products as $prod)
-                        <a href="">
+                        <a href="{{ url('view-category/' . $prod->category->slug . '/' . $prod->slug) }}">
                             <div class="item">
                                 <div class="card">
                                     <img src="{{ asset('assets/uploads/products/' . $prod->image) }}" alt="">
