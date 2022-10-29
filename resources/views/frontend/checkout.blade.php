@@ -79,15 +79,18 @@
                                     <th>Price</th>
                                 </thead>
                                 <tbody>
+                                    @php $total = 0 ; @endphp
                                     @foreach ($cartItems as $item)
                                         <tr>
                                             <td>{{ $item->products->name }}</td>
                                             <td>{{ $item->prod_qty }}</td>
                                             <td>{{ $item->products->selling_price }}</td>
                                         </tr>
+                                        @php $total += $item->products->selling_price*$item->prod_qty ; @endphp
                                     @endforeach
                                 </tbody>
                             </table>
+                            <input type="hidden" name="total_price" value="{{ $total }}">
                             <hr>
                             <button class="btn btn-primary float-end">Place Order</button>
                         </div>

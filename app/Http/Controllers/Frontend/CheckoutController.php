@@ -41,6 +41,7 @@ class CheckoutController extends Controller
         $order->state = $request->input('state');
         $order->country = $request->input('country');
         $order->pincode = $request->input('pincode');
+        $order->total_price = $request->input('total_price');
         $order->tracking_no = 'THF'.rand(1111,9999);
         $order->save();
 
