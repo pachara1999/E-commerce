@@ -26,17 +26,22 @@
                                 <h4>{{ $item->products->name }}</h4>
                             </div>
                             <div class="col-md-2 align-self-center">
-                                <h6>{{ $item->products->selling_price }} Bath</h6> 
+                                <h6>{{ $item->products->selling_price }} Bath</h6>
                             </div>
                             <div class="col-md-3 align-self-center">
                                 <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
-                                <label for="Quantity">Quantity</label>
-                                <div class="input-group text-center mb-3" style="width: 130px;">
-                                    <button class="input-group-text changeQuantity decrement-btn">-</button>
-                                    <input type="text" name="quantity" class="form-control qty-input text-center"
-                                        value="{{ $item->prod_qty }}">
-                                    <button class="input-group-text changeQuantity increment-btn">+</button>
-                                </div>
+                                @if ($item->products->qty >= $item->prod_qty)
+                                    <label for="Quantity">Quantity</label>
+                                    <div class="input-group text-center mb-3" style="width: 130px;">
+                                        <button class="input-group-text changeQuantity decrement-btn">-</button>
+                                        <input type="text" name="quantity" class="form-control qty-input text-center"
+                                            value="{{ $item->prod_qty }}">
+                                        <button class="input-group-text changeQuantity increment-btn">+</button>
+                                    </div>
+                                    @php $total += $item->products->selling_price*$item->prod_qty ; @endphp
+                                @else
+                                    <h6>Out of Stoct</h6>
+                                @endif
                             </div>
                             <div class="col-md-2 align-self-center">
                                 <button type="button" class="btn btn-danger delete-cart-item"><i
@@ -45,7 +50,6 @@
                         </div>
                     </div>
                 </div>
-                @php $total += $item->products->selling_price*$item->prod_qty ; @endphp
             @endforeach
         @else
             <div class="container">
@@ -54,7 +58,10 @@
         @endif
         <div class="row mt-4">
             <div class="col-md-12">
-                <h4>Total price : {{ $total }} Bath @if($cartItems->count() > 0)<button class="btn btn-outline-success float-end">Process to checkout</button>@endif</h4>
+                <h4>Total price : {{ $total }} Bath @if ($cartItems->count() > 0)
+                        <a href="{{ url('checkout') }}" class="btn btn-outline-success float-end">Process to checkout</a>
+                    @endif
+                </h4>
             </div>
         </div>
     </div>

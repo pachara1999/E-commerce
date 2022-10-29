@@ -54,8 +54,11 @@
                                 <br />
                                 <button type="button" class="btn btn-success me-3 float-start m-1"><i
                                         class="fas fa-heart"></i> Add to Wishlist</button>
-                                <button type="button" class="btn btn-primary me-3 float-start m-1 addToCartBtn"><i
-                                        class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                @if ($product->qty > 0)
+                                    <button type="button" class="btn btn-primary me-3 float-start m-1 addToCartBtn"><i
+                                            class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                @endif
+
                             </div>
                         </div>
                     </div>
@@ -72,7 +75,7 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-            
+
         })
     </script>
 @endsection
